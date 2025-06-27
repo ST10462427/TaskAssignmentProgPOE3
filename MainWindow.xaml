@@ -1,0 +1,49 @@
+﻿<Window x:Class="TaskManagementApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Task Management App" Height="450" Width="600">
+	<Grid Margin="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<!-- Task Input Area -->
+		<StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,0,0,10">
+			<TextBlock Text="Review Privacy Settings" FontWeight="Bold" FontSize="16" Margin="0,0,0,5"/>
+			<TextBlock Text="Review Account Privacy Settings"/>
+			<TextBox x:Name="TaskTitleBox" Margin="0,5" PlaceholderText="Enter task title"/>
+			<TextBlock Text="Task Description"/>
+			<TextBox x:Name="TaskDescriptionBox" Margin="0,5" PlaceholderText="Enter task description"/>
+			<StackPanel Orientation="Horizontal" Margin="0,5">
+				<CheckBox x:Name="ReminderCheckBox" Content="Set Reminder"/>
+				<DatePicker x:Name="ReminderDatePicker" IsEnabled="False" Margin="10,0,0,0"/>
+			</StackPanel>
+			<Button Content="Add Task" Click="AddTask_Click" Width="100" Margin="0,5"/>
+		</StackPanel>
+
+		<!-- Task List -->
+		<ListBox x:Name="TaskListBox" Grid.Row="1" Margin="0,10" DisplayMemberPath="Display"/>
+
+		<!-- Action Buttons and Log -->
+		<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+			<Button Content="Complete Task" Click="CompleteTask_Click" Margin="5"/>
+			<Button Content="Delete Task" Click="DeleteTask_Click" Margin="5"/>
+			<Button x:Name="ShowActivityLogButton" Content="Show Activity Log" Click="ShowActivityLogButton_Click" Margin="5"/>
+		</StackPanel>
+
+		<!-- Activity Log -->
+		<ListBox x:Name="ActivityLogListBox" Grid.Row="2" HorizontalAlignment="Right" Width="250"/>
+
+		<!-- Chatbot / Quiz Section -->
+		<StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Right" Width="250">
+			<TextBox x:Name="UserInputTextBox" KeyDown="UserInputTextBox_KeyDown" PlaceholderText="Ask something..."/>
+			<TextBlock x:Name="ChatbotOutputTextBlock" TextWrapping="Wrap" Margin="0,5"/>
+			<TextBlock x:Name="QuestionTextBlock"/>
+			<StackPanel x:Name="OptionButtonsStackPanel"/>
+			<TextBlock x:Name="ResultTextBlock"/>
+			<Button x:Name="StartQuizButton" Click="StartQuizButton_Click" Content="Start Quiz"/>
+		</StackPanel>
+	</Grid>
+</Window>
